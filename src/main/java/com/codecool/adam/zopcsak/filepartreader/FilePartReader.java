@@ -19,7 +19,7 @@ public class FilePartReader {
     }
 
     public void setup(String filePath, Integer fromLine, Integer toLine) {
-        if (toLine >= fromLine || fromLine >= 1) {
+        if (toLine >= fromLine && fromLine >= 1) {
             this.filePath = filePath;
             this.fromLine = fromLine;
             this.toLine = toLine;
@@ -29,7 +29,7 @@ public class FilePartReader {
         }
     }
 
-    private String read() throws IOException {
+    public String read() throws IOException {
         String fileContent = "";
         File file = new File(this.filePath);
         Scanner scanner = new Scanner(file);
@@ -43,8 +43,8 @@ public class FilePartReader {
     }
 
     public String readLines() {
-        int fromIndex = this.fromLine-1;
-        int toIndex = this.toLine-1;
+        int fromIndex = getFromLine()-1;
+        int toIndex = getToLine()-1;
         String askedLines = "";
         try {
             String fileContent = this.read();
@@ -60,7 +60,18 @@ public class FilePartReader {
             System.out.println("File not found. Please check the filePath.");
         }
 
-        return askedLines;
+        return askedLines.trim();
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public Integer getFromLine() {
+        return fromLine;
+    }
+
+    public Integer getToLine() {
+        return toLine;
+    }
 }

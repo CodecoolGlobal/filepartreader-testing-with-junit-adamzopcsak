@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         FilePartReader reader = new FilePartReader();
-        reader.setup("/home/adamzopcsak/codecool/oop/si5/filepartreader-testing-with-junit-adamzopcsak/src/files/bacon", 1, 10);
+        reader.setup("teve", 1, 10);
         System.out.println(reader.readLines());
 
         FileWordAnalyzer analyzer = new FileWordAnalyzer(reader);
