@@ -8,11 +8,12 @@ import java.util.List;
 public class FileWordAnalyzer {
     FilePartReader reader;
 
+
     public FileWordAnalyzer(FilePartReader filePartReader) {
         this.reader = filePartReader;
     }
 
-    public List getWordsOrderedAlphabetically() {
+    public List<String> getWordsOrderedAlphabetically() {
         String readLines = reader.readLines();
 
         List<String> splitReadLines = new ArrayList<>(Arrays.asList(readLines.split(" ")));
@@ -35,10 +36,9 @@ public class FileWordAnalyzer {
         return wordsContainingSubString;
     }
 
-    public List getStringsWhichPalindromes() {
+    public List<String> getStringsWhichPalindromes() {
         String readLines = reader.readLines();
         List<String> splitReadLines = new ArrayList<>(Arrays.asList(readLines.split(" ")));
-        System.out.println(splitReadLines);
         List<String> palindromes = new ArrayList<>();
         String wordBackwards = "";
 
@@ -46,8 +46,7 @@ public class FileWordAnalyzer {
             for (int i= word.length()-1; i >= 0; i--) {
                 wordBackwards += word.charAt(i);
             }
-            System.out.println(word);
-            System.out.println(wordBackwards);
+
             if (word.equals(wordBackwards)) {
                 palindromes.add(word);
             }
